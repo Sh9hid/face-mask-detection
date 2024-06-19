@@ -43,6 +43,8 @@ yolo predict model='models\best.pt' source=' .mp4/.jpeg/etc'
 
 - More readability, more simplicity. Better code organisation.
 - Better documentation.
-- Deploy the model.
-- Try to achieve better accuracy on the same dataset.
-- Discuss with Senior CV Engineers on the exact same problem.
+- Deploy the model. 
+- Find better data cleaning methods.
+- Try and achieve better accuracy on the same dataset.
+- Ask senior CV Engineers on the inaccurate label problem.
+- Write down use cases and try and build niched down cv models.(Reverse blackbox approach)
