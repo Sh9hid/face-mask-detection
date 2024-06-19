@@ -1,5 +1,5 @@
 # Face Mask Detection (You-Only-Look-Once v8)
-Here's the link for[Google Colab](https://colab.research.google.com/drive/1bnn0NgoFH7i2Aa0mad_mABcfYUbEqkkM?usp=sharing), notebook.
+Here's the link to the [Google Colab](https://colab.research.google.com/drive/1bnn0NgoFH7i2Aa0mad_mABcfYUbEqkkM?usp=sharing) notebook.
 
  ## Installation
 
