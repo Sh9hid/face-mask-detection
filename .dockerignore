@@ -1,0 +1,9 @@
+__pycache__
+.venv
+.gitignore
+models
+videos
+runs
+yolov8n.pt
+yolov8n-cls.pt
+output-vids 
