@@ -11,7 +11,7 @@ def split_and_copy_images(annotation_path, images_path, output_path):
     for classification training.
     :params annotation_path\csv
     :params path to all images for training
-    :return
+    :returns None
     '''
     # STEP 1: Load the CSV file.
     annotations = pd.read_csv(annotation_path)
