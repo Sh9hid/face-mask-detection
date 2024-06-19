@@ -1,5 +1,5 @@
 import os
-from config import *
+from config.config import FILE_PATH, IMAGES_DIR
 import pandas as pd
 import shutil
 from sklearn.model_selection import train_test_split
@@ -19,15 +19,15 @@ def create_clean_csv(data):
     # Exploratory Data Analysis
     unique_class_names = data['classname'].unique()
 
-    # # Step 1: Handle duplicate entries
-    # data = data.drop_duplicates()
+    # Step 1: Handle duplicate entries
+    data = data.drop_duplicates()
 
-    # # Step 2: Resolve conflicts by choosing 'face_with_mask' over others
-    # def resolve_conflict(group):
-    #     if 'face_with_mask' in group['classname'].values:
-    #         return group[group['classname'] == 'face_with_mask']
-    #     else:
-    #         return group.iloc[:1]
+    # Step 2: Resolve conflicts by choosing 'face_with_mask' over others
+    def resolve_conflict(group):
+        if 'face_with_mask' in group['classname'].values:
+            return group[group['classname'] == 'face_with_mask']
+        else:
+            return group.iloc[:1]
 
     # Step 3: Categorize into relevant classnames
     def map_classnames(classname):
@@ -52,14 +52,10 @@ def create_clean_csv(data):
 
     print(f"Data processed successfully and saved to {output_path}")
 
-# Load the dataset
-data = pd.read_csv(FILE_PATH)
-
-# Fix our data: Apply create_clean_csv
-create_clean_csv(data)
 
 
-# Get useful images from the dataset for training. 
+
+# Copy useful images from the dataset for training. 
 def process_images(data, IMAGES_DIR):
     """
     This function selects useful images from the entire-dataset for training.
@@ -84,13 +80,10 @@ def process_images(data, IMAGES_DIR):
         try:
             # Copy the image to the output directory.
             shutil.copy(image_path, IMAGES_OUTPUT_DIRECTORY_PATH)
-            print(f"Processed {image} to {IMAGES_OUTPUT_DIRECTORY_PATH}")
         except Exception as e:
             # Handle any exceptions that occur during the copying process.
             print(f"Error processing {image}: {str(e)}")
 
 
-# Process images for training
-process_images(data, IMAGES_DIR)
 
 
