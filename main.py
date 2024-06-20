@@ -32,6 +32,7 @@ def main():
     split_and_copy_images(annotation_path, images_path, output_path)
 
     # Step 3: Train the model
+    
     trained_model = train_model('yolov8n-cls.pt') # Here we are using classification nano for obvious compute reasons
    
     # Step 4:# Infer with your best-checkpoint.
