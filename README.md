@@ -8,7 +8,8 @@ Here's the link to the [Google Colab](https://colab.research.google.com/drive/1b
 ```
 python -m venv .venv
 .venv/Scripts/activate # on windows
-source .venv/bin/activate
+or
+source .venv/bin/activate # on linux
 ```
 2. Install Dependencies
 
