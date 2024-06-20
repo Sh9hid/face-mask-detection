@@ -20,7 +20,6 @@ pip install -r requirements.txt
 
 ```
 python main.py  
-
 ```
 or perform inference from the cli using,
 
