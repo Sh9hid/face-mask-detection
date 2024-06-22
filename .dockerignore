@@ -1,9 +1,10 @@
 __pycache__
-.venv
+.venv/
+.env
 .gitignore
 models
-videos
+videos/
 runs
 yolov8n.pt
 yolov8n-cls.pt
-output-vids 
+output-vids/

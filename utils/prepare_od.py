@@ -64,6 +64,10 @@ def fix_labels(image_width, image_height, boxes):
     return [(new_x1, new_y1, new_x2, new_y2, label)]
 
 def create_yolo_labels(df, dir):
+    """
+    TODO : Add Readme
+
+    """
     for index, row in df.iterrows():
         filename = row['name']
         image_path = os.path.join('data/images', f'{filename}')

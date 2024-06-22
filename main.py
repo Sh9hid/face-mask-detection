@@ -1,7 +1,7 @@
 import os
 import sys
 import pandas as pd
-from config.config import FILE_PATH, IMAGES_DIR, VIDEOS_DIR
+from config.config import FILE_PATH, IMAGES_DIR, VIDEOS_DIR, ANNOTATION_PATH, CLEANED_IMAGES_PATH, TRAINING_CLS_DATA
 from utils.clean import create_clean_csv, process_images
 from utils.prepare import split_and_copy_images
 from utils.train import train_model
@@ -13,32 +13,30 @@ def main():
     # 1.1 : Load the dataset
     data = pd.read_csv(FILE_PATH)
 
-    print("Cleaning the data...")
-
     # 1.2: Fix our data: Apply create_clean_csv
     clean_csv = create_clean_csv(data)
 
     # 1.3: Process images for training
     process_images(data, IMAGES_DIR)
 
-    # Step 2: Prepare data for training
-    # 2.1 : Load useful annotations and data from dataset
-    annotation_path = 'data/cleaned_data.csv'
-    images_path = 'data/images'
+    # Step 2:  Split data into 80/20 training and validation set respectively.
+    split_and_copy_images(ANNOTATION_PATH, CLEANED_IMAGES_PATH)
+ 
+    # Step 3: Train the model 
+    # 3.1: Select any model of your choice
+    model = 'yolov8n-cls.pt'
 
-    output_path = 'data/data'
+    # 3.2: Train model
+    trained_model = train_model(model)
 
-    # 2.2: Apply split and copy images to respective paths 
-    split_and_copy_images(annotation_path, images_path, output_path)
-
-    # Step 3: Train the model
-    
-    trained_model = train_model('yolov8n-cls.pt') # Here we are using classification nano for obvious compute reasons
-   
-    # Step 4:# Infer with your best-checkpoint.
+    # Step 4: Infer videos on your last best-checkpoint
     videos_dir = VIDEOS_DIR
-    for video_file in os.listdir(videos_dir):
-        video_path = os.path.join(videos_dir, video_file)
+
+    for video_file in os.listdir(VIDEOS_DIR):
+        video_path = os.path.join(VIDEOS_DIR, video_file)
+        print(f'Starting inference on {video_path}')
+
+        # Perform inference
         infer(video_path, trained_model)
 
     print("Outputs saved to runs/classify/ directory successfully!")

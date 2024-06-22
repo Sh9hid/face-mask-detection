@@ -1,10 +1,11 @@
 import os
 import pandas as pd
 import shutil
+from config.config import IMAGES_OUTPUT_DIRECTORY_PATH, TRAINING_CLS_DATA
 from sklearn.model_selection import train_test_split
 from PIL import Image
 
-def split_and_copy_images(annotation_path, images_path, output_path):
+def split_and_copy_images(annotation_path, images_path):
     '''
     Split images into train and val sets 
     and set up directory in correct format 
@@ -13,21 +14,24 @@ def split_and_copy_images(annotation_path, images_path, output_path):
     :params path to all images for training
     :returns None
     '''
-    # STEP 1: Load the CSV file.
+    
+    print(f'Splitting {IMAGES_OUTPUT_DIRECTORY_PATH} into 80/20 training and validation sets respectively. Please hold on, this might take a while.. ')
+
+    # Step 1: Load the CSV file.
     annotations = pd.read_csv(annotation_path)
 
-    # STEP 2: Split data into 80/20 training and validation set respectively.
+    # Step 2: Split data into 80/20 training and validation set respectively.
     train_df, val_df = train_test_split(annotations, test_size=0.2, random_state=42)
 
-    # STEP 3: Set train and val paths
-    TRAIN_IMAGES_DIR = os.path.join(output_path, 'train')
-    VAL_IMAGES_DIR = os.path.join(output_path, 'val')
+    # Step 3: Set train and val paths
+    TRAIN_IMAGES_DIR = os.path.join(TRAINING_CLS_DATA, 'train')
+    VAL_IMAGES_DIR = os.path.join(TRAINING_CLS_DATA, 'val')
 
-    # STEP 4: Make a list of images for copying from earlier split. 
+    # Step 4: Make a list of images for copying from earlier split. 
     train_images = list(train_df['name'])
     val_images = list(val_df['name'])
 
-    # STEP 5: Set up directory-path, key-value pairs for improving readability 
+    # Step 5: Set up directory-path, key-value pairs for improving readability 
     directories = {
         'train_mask': os.path.join(TRAIN_IMAGES_DIR, 'mask'),
         'train_no_mask': os.path.join(TRAIN_IMAGES_DIR, 'no-mask'),
@@ -71,6 +75,6 @@ def split_and_copy_images(annotation_path, images_path, output_path):
         except FileNotFoundError:
             print(f"Error: {source_path} not found.")
 
-    print(f"Data split into training and validation sets and copied to {TRAIN_IMAGES_DIR} and {VAL_IMAGES_DIR} respectively.")
+    print(f"Data split into training and validation sets on {TRAIN_IMAGES_DIR} and {VAL_IMAGES_DIR} respectively.")
 
 

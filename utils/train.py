@@ -14,8 +14,10 @@ def train_model(model_path):
     model = YOLO(model_path) # Ideal for training
     
     # Step 2: Train model on mask no-mask
+    # Training 
+    print('Starting model training.  ')
     results = model.train(data="data/data_cls", imgsz=800, batch=8, epochs=10, save = True, plots=True)
-    
+   
     # Step 3: Optional: Set model to evaluation mode
     model.eval()
 

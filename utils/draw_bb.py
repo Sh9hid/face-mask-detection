@@ -58,7 +58,9 @@ def save_yolo_labels(image_path, boxes, yolo_labels_path):
 
 
 def draw_centered_bounding_boxes(csv_file_path, images_folder_path, yolo_labels_path):
-    
+    """
+
+    """
 
     data = read_data(csv_file_path)
     image_boxes = group_boxes_by_image(data, images_folder_path)
