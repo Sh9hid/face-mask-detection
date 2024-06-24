@@ -11,7 +11,7 @@ python -m venv .venv
 or
 source .venv/bin/activate # on linux
 ```
-2. Create a new .env file and add file paths.
+2. Create a new .env file and edit file paths.
 
 ```
 DATA_DIRECTORY_PATH = 'data/'   # path to root dataset directory
