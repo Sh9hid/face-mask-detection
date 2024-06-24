@@ -11,13 +11,29 @@ python -m venv .venv
 or
 source .venv/bin/activate # on linux
 ```
-2. Install Dependencies
+2. Create a new .env file and add file paths.
+
+```
+DATA_DIRECTORY_PATH = 'data/'   # path to root dataset directory
+ANNOTATION_PATH = 'data/cleaned_data.csv'   # path to cleaned csv containing bboxes
+IMAGES_OUTPUT_DIRECTORY_PATH = 'data/images'    # path to selected images from the entire dataset
+CLEANED_IMAGES_PATH = 'data/images'     # path to cleaned images directory
+TRAINING_CLS_DATA = 'data/data_cls'     # path to training classification data
+
+# Set your paths here
+FILE_PATH = 'path/to/your/CSV'
+IMAGES_DIR ='path/to/your/images/directory'
+VIDEOS_DIR = 'path/to/your/video/directory'
+
+```
+
+3. Install Dependencies
 
 ```
 pip install -r requirements.txt
 ```
 
-3. Run app for training
+4. Run app for training
 
 ```
 python main.py  

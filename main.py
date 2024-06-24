@@ -19,7 +19,7 @@ def main():
     # 1.3: Process images for training
     process_images(data, IMAGES_DIR)
 
-    # Step 2:  Split data into 80/20 training and validation set respectively.
+    # Step 2:  Split data into 80/20 train and val sets respectively.
     split_and_copy_images(ANNOTATION_PATH, CLEANED_IMAGES_PATH)
  
     # Step 3: Train the model 
