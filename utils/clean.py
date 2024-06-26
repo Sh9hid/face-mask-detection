@@ -4,7 +4,6 @@ import pandas as pd
 import shutil
 from sklearn.model_selection import train_test_split
 
-
 def resolve_conflict(group):
     """
     This function priortizes 'face_with_mask' classname over others.

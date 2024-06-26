@@ -19,25 +19,25 @@ def main():
     # 1.3: Process images for training
     process_images(data, IMAGES_DIR)
 
-    # Step 2:  Split data into 80/20 train and val sets respectively.
-    split_and_copy_images(ANNOTATION_PATH, CLEANED_IMAGES_PATH)
+    # # Step 2:  Split data into 80/20 train and val sets respectively.
+    # split_and_copy_images(ANNOTATION_PATH, CLEANED_IMAGES_PATH)
  
-    # Step 3: Train the model 
-    # 3.1: Select any model of your choice
-    model = 'yolov8n-cls.pt'
+    # # Step 3: Train the model 
+    # # 3.1: Select any model of your choice
+    # model = 'yolov8n-cls.pt'
 
-    # 3.2: Train model
-    trained_model = train_model(model)
+    # # 3.2: Train model
+    # trained_model = train_model(model)
 
-    # Step 4: Infer videos on your last best-checkpoint
-    videos_dir = VIDEOS_DIR
+    # # Step 4: Infer videos on your last best-checkpoint
+    # videos_dir = VIDEOS_DIR
 
-    for video_file in os.listdir(VIDEOS_DIR):
-        video_path = os.path.join(VIDEOS_DIR, video_file)
-        print(f'Starting inference on {video_path}')
+    # for video_file in os.listdir(VIDEOS_DIR):
+    #     video_path = os.path.join(VIDEOS_DIR, video_file)
+    #     print(f'Starting inference on {video_path}')
 
-        # Perform inference
-        infer(video_path, trained_model)
+    #     # Perform inference
+    #     infer(video_path, trained_model)
 
     print("Outputs saved to runs/classify/ directory successfully!")
 

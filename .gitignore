@@ -5,3 +5,4 @@ videos/
 runs/
 data/
 yolov8n.pt
+yolov8n-cls.pt
