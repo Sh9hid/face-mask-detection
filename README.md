@@ -45,15 +45,15 @@ yolo predict model='models\best.pt' source=' .mp4/.jpeg/etc'
 ```
 
 ## Summary
-- Object Detection - Trained on YOLOv8n.pt (Model underfits, checkpoints not added till yet)
+- Object Detection - Trained on YOLOv8n.pt (Model getting better on higher epochs)
 - Classification - Trained on YOLOv8n-cls.pt
-- Mask, No Mask Detection and Classification.
-- Custom Dataset (using CV). Labels corrected using OpenCV and observation.
+- Mask, No Mask;  Detection and Classification.
+- Custom Dataset (using CV). Labels corrected using OpenCV and observation using preview.py.
 - Trained on YOLOv8, locally for both classification and object-detection.
-- Classification model available. Classes 0: Mask, 1: No-Mask
-- Checkpoint for classification - models/best.pt', object detection - yet to converge.
-- Helper functions for both classification and detection in utils/
-- Output video directory -> output-vids/
+- Classes 0: Mask, 1: No-Mask
+- Checkpoint for classification - 'models/best.pt', object detection - 'models/best_od.pt'
+- Helper functions for both classification and object detection in utils.
+- Output stored at -> output-vids/
   
 ## Roadmap
 
@@ -61,7 +61,8 @@ yolo predict model='models\best.pt' source=' .mp4/.jpeg/etc'
 - Better documentation.
 - Deploy the model. 
 - Find better data cleaning methods.
-- Try and achieve better accuracy on the same dataset.
-- Ask senior CV Engineers on the inaccurate label problem.
+   + Upsample 'no-mask' dataset.
+   + Data Augmentation on both sets afterwards. (might increase variance because of inaccurate labels)
+- Try and achieve better accuracy on the same dataset. (More epochs, seems to improve)
+- Ask senior CV Engineers on the inaccurate label problem. (Segmentation - SAM, etc)
 - Write down use cases and try and build niched down cv models.(Reverse blackbox approach)
-- FIX: Workflows -> Docker Build
