@@ -61,7 +61,7 @@ yolo predict model='models\best.pt' source=' .mp4/.jpeg/etc'
 - Better documentation.
 - Deploy the model. 
 - Find better data cleaning methods.
-   + Upsample 'no-mask' dataset.
+   + Upsample 'no-mask' images.
    + Data Augmentation on both sets afterwards. (might increase variance because of inaccurate labels)
 - Try and achieve better accuracy on the same dataset. (More epochs, seems to improve)
 - Ask senior CV Engineers on the inaccurate label problem. (Segmentation - SAM, etc)
